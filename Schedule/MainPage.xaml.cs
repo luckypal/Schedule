@@ -13,20 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace Schedule
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
+        }
 
-            Global.instance.entireFrame = EntireFrame;
-            EntireFrame.Content = new MainPage();
+        private void Contacts_Click(object sender, RoutedEventArgs e)
+        {
+            Global.instance.entireFrame.Navigate(new Contacts.ContactsPage());
         }
     }
 }

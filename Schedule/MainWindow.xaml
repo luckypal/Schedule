@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Schedule"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Schedule" Height="500" Width="832" ResizeMode="NoResize">
+    <Grid Margin="0,0,43,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="EntireFrame" Content="" HorizontalAlignment="Left" Margin="10,10,-28,0" Width="800" NavigationUIVisibility="Hidden" Height="450" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
