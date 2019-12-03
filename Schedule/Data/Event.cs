@@ -37,6 +37,19 @@ namespace Schedule
         }
         public string Name { get; set; }
         public int ContactId { get; set; }
+
+        public string ContactName
+        {
+            get
+            {
+                for (int i = 0; i < Global.instance.Contacts.Count; i ++)
+                {
+                    if (Global.instance.Contacts[i].Id == ContactId)
+                        return Global.instance.Contacts[i].Name;
+                }
+                return "";
+            }
+        }
         public DateTime EventDate { get; set; }
         public string Location { get; set; }
         public string Details { get; set; }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Schedule.Events
+namespace Schedule.WeeklyEvents
 {
     /// <summary>
     /// Interaction logic for EventsPage.xaml
@@ -55,44 +55,6 @@ namespace Schedule.Events
             DatePicker.SelectedDate = DateTime.Now;
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Global.instance.entireFrame.GoBack();
-        }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            Global.instance.entireFrame.Navigate(new AddEvent(-1, null, this));
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            int selIndex = EventList.SelectedIndex;
-            DateTime selectedDate = DatePicker.SelectedDate ?? DateTime.Now;
-            List<Event> events = Global.instance.getEventsFromDate(selectedDate);
-            if (selIndex == -1) return;
-
-            Event selectedItem = events[selIndex];
-            Global.instance.entireFrame.Navigate(new AddEvent(selIndex, selectedItem, this));
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            int selIndex = EventList.SelectedIndex;
-            if (selIndex == -1) return;
-
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
-                DateTime selectedDate = DatePicker.SelectedDate ?? DateTime.Now;
-                List<Event> events = Global.instance.getEventsFromDate(selectedDate);
-
-                Event selectedItem = events[selIndex];
-                Global.instance.Events.Remove(selectedItem);
-                reload();
-            }
-        }
-
         private void Date_Select(object sender, SelectionChangedEventArgs e)
         {
             reload();
@@ -103,11 +65,23 @@ namespace Schedule.Events
             EventList.Items.Clear();
 
             DateTime selectedDate = DatePicker.SelectedDate ?? DateTime.Now;
-            List<Event> events = Global.instance.getEventsFromDate(selectedDate);
-            for (int i = 0; i < events.Count; i++)
-                EventList.Items.Add(events[i]);
 
-            Global.instance.saveData();
+            int dayOfWeek = (int)selectedDate.DayOfWeek;
+            DateTime startDate = selectedDate - new TimeSpan(dayOfWeek, 0, 0, 0);
+            DateTime endDate = startDate + new TimeSpan(7, 0, 0, 0);
+
+            List<Event> events = Global.instance.Events;
+            for (int i = 0; i < events.Count; i++)
+            {
+                if (startDate <= events [i].EventDate 
+                    && events [i].EventDate < endDate)
+                    EventList.Items.Add(events[i]);
+            }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Global.instance.entireFrame.GoBack();
         }
     }
 }

@@ -11,7 +11,7 @@
     <Grid>
         <Button x:Name="Contacts" Content="Contacts" HorizontalAlignment="Left" Margin="309,39,0,0" VerticalAlignment="Top" Width="174" Height="75" Click="Contacts_Click"/>
         <Button x:Name="Events" Content="Events" HorizontalAlignment="Left" Margin="309,119,0,0" VerticalAlignment="Top" Width="174" Height="76" Click="Events_Click"/>
-        <Button x:Name="WeeklyEvents" Content="Weekly Events" HorizontalAlignment="Left" Margin="309,200,0,0" VerticalAlignment="Top" Width="174" Height="76"/>
+        <Button x:Name="WeeklyEvents" Content="Weekly Events" HorizontalAlignment="Left" Margin="309,200,0,0" VerticalAlignment="Top" Width="174" Height="76" Click="WeeklyEvents_Click"/>
         <Button x:Name="TimeUsagePrediction" Content="Time usage prediction" HorizontalAlignment="Left" Margin="309,281,0,0" VerticalAlignment="Top" Width="174" Height="76"/>
 
     </Grid>

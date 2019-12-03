@@ -34,5 +34,10 @@ namespace Schedule
         {
             Global.instance.entireFrame.Navigate(new Events.EventsPage());
         }
+
+        private void WeeklyEvents_Click(object sender, RoutedEventArgs e)
+        {
+            Global.instance.entireFrame.Navigate(new WeeklyEvents.EventsPage());
+        }
     }
 }
