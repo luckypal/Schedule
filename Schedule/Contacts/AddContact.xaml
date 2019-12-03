@@ -11,7 +11,7 @@
     <Grid>
         <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Back_Click"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="68,84,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="30" Margin="132,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="425"/>
+        <TextBox x:Name="ContactName" HorizontalAlignment="Left" Height="30" Margin="132,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="425"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="68,119,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Email" HorizontalAlignment="Left" Height="30" Margin="132,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="425"/>
         <Label Content="Note" HorizontalAlignment="Left" Margin="68,154,0,0" VerticalAlignment="Top"/>

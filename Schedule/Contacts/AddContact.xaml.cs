@@ -31,7 +31,7 @@ namespace Schedule.Contacts
             contact = item;
             if (item == null) contact = new Contact();
 
-            Name.Text = contact.Name;
+            ContactName.Text = contact.Name;
             Email.Text = contact.Email;
             Note.Text = contact.Note;
 
@@ -46,11 +46,11 @@ namespace Schedule.Contacts
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            if (Name.Text == "" || Email.Text == "")
+            if (ContactName.Text == "" || Email.Text == "")
             {
                 return;
             }
-            contact.Name = Name.Text;
+            contact.Name = ContactName.Text;
             contact.Email = Email.Text;
             contact.Note = Note.Text;
 

@@ -36,7 +36,6 @@ namespace Schedule
 
         [XmlArrayItem("Contacts")]
         private List<Contact> _contacts;
-
         public List<Contact> Contacts
         {
             get
@@ -51,6 +50,22 @@ namespace Schedule
             }
         }
 
+        [XmlArrayItem("Events")]
+        private List<Event> _events;
+        public List<Event> Events
+        {
+            get
+            {
+                if (_events != null) return _events;
+                _events = new List<Event>();
+                return _events;
+            }
+            set
+            {
+                _events = value;
+            }
+        }
+        
         public void saveData()
         {
             System.IO.FileStream file = System.IO.File.Create(filePath);
@@ -69,10 +84,36 @@ namespace Schedule
                 file.Close();
 
                 Contacts = temp.Contacts;
-            } catch (Exception _)
+                Events = temp.Events;
+            } catch (Exception)
             {
                 return;
             }
+        }
+
+        public List<Event> getEventsFromDate(DateTime dateTime)
+        {
+            List<Event> results = new List<Event>();
+            for (int i = 0; i < Events.Count; i ++)
+            {
+                if (dateTime.Date == Events [i].EventDate.Date)
+                {
+                    results.Add(Events[i]);
+                }
+            }
+            return results;
+        }
+
+        public int getEventIndexFromId(int eventId)
+        {
+            for (int i = 0; i < Events.Count; i++)
+            {
+                if (Events[i].Id == eventId)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

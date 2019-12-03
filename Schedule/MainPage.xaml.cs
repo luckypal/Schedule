@@ -29,5 +29,10 @@ namespace Schedule
         {
             Global.instance.entireFrame.Navigate(new Contacts.ContactsPage());
         }
+
+        private void Events_Click(object sender, RoutedEventArgs e)
+        {
+            Global.instance.entireFrame.Navigate(new Events.EventsPage());
+        }
     }
 }
