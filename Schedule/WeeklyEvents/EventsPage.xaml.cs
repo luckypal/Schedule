@@ -41,16 +41,6 @@ namespace Schedule.WeeklyEvents
                 Header = "Date",
                 DisplayMemberBinding = new Binding("EventDate")
             });
-            gridView.Columns.Add(new GridViewColumn
-            {
-                Header = "Location",
-                DisplayMemberBinding = new Binding("Location")
-            });
-            gridView.Columns.Add(new GridViewColumn
-            {
-                Header = "Details",
-                DisplayMemberBinding = new Binding("Details")
-            });
 
             DatePicker.SelectedDate = DateTime.Now;
         }

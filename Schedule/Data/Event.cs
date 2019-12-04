@@ -51,7 +51,27 @@ namespace Schedule
             }
         }
         public DateTime EventDate { get; set; }
-        public string Location { get; set; }
-        public string Details { get; set; }
+
+        public Boolean Recurring;
+
+        public class ContentItem
+        {
+            public string Title;
+            public string Content;
+        }
+        public List<ContentItem> _content = null;
+
+        public List<ContentItem> Content
+        {
+            get
+            {
+                if (_content == null) _content = new List<ContentItem>();
+                return _content;
+            }
+            set
+            {
+                _content = value;
+            }
+        }
     }
 }

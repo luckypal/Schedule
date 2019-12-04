@@ -49,8 +49,6 @@ namespace Schedule.Events
                 Hour.Text = item.EventDate.Hour.ToString();
                 Minute.Text = item.EventDate.Minute.ToString();
                 Second.Text = item.EventDate.Second.ToString();
-                Location.Text = item.Location;
-                Details.Text = item.Details;
             }
             else curEvent = new Event();
 
@@ -84,9 +82,6 @@ namespace Schedule.Events
 
             TimeSpan ts = new TimeSpan(int.Parse(Hour.Text), int.Parse(Minute.Text), int.Parse(Second.Text));
             curEvent.EventDate = selectedDate.Date + ts;
-
-            curEvent.Location = Location.Text;
-            curEvent.Details = Details.Text;
 
             if (index == -1)
             {

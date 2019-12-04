@@ -14,17 +14,14 @@
         <Label Content="Date" HorizontalAlignment="Left" Margin="75,115,0,0" VerticalAlignment="Top"/>
         <Label Content="Contact" HorizontalAlignment="Left" Margin="59,84,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="ContactSelect" HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top" Width="425" Height="30"/>
-        <Label Content="Location" HorizontalAlignment="Left" Margin="55,189,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Location" HorizontalAlignment="Left" Height="30" Margin="115,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="425"/>
         <DatePicker x:Name="eventDate" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" Height="30" Width="425"/>
         <Label Content="Time (H:M:S)" HorizontalAlignment="Left" Margin="33,154,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Hour" HorizontalAlignment="Left" Height="30" Margin="115,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="137" PreviewTextInput="NumberValidationTextBox"/>
         <TextBox x:Name="Minute" HorizontalAlignment="Left" Height="30" Margin="259,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="137" PreviewTextInput="NumberValidationTextBox"/>
         <TextBox x:Name="Second" HorizontalAlignment="Left" Height="30" Margin="403,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="137" PreviewTextInput="NumberValidationTextBox"/>
-        <Label Content="Details" HorizontalAlignment="Left" Margin="64,220,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Details" HorizontalAlignment="Left" Height="220" Margin="115,220,0,0" TextWrapping="Wrap" AcceptsReturn="True" Text="" VerticalAlignment="Top" Width="675"/>
         <Label Content="Event Name" HorizontalAlignment="Left" Margin="36,49,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EventName" HorizontalAlignment="Left" Height="30" Margin="115,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="425"/>
+        <TextBox x:Name="EventName" HorizontalAlignment="Left" Height="30" Margin="115,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284"/>
+        <CheckBox x:Name="Recurring" Content="Recurring every week." HorizontalAlignment="Left" Margin="403,51,0,0" VerticalAlignment="Top" Height="20" Width="136"/>
 
     </Grid>
 </Page>
