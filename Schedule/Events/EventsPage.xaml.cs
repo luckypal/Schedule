@@ -52,7 +52,12 @@ namespace Schedule.Events
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            Global.instance.entireFrame.Navigate(new AddEvent(-1, null, this));
+            PromptDialog dialog = new PromptDialog();
+            if (dialog.ShowDialog() ?? true)
+            {
+                int count = int.Parse(dialog.EventCount);
+                Global.instance.entireFrame.Navigate(new AddEvent(-1, null, this, count));
+            }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
@@ -63,7 +68,7 @@ namespace Schedule.Events
             if (selIndex == -1) return;
 
             Event selectedItem = events[selIndex];
-            Global.instance.entireFrame.Navigate(new AddEvent(selIndex, selectedItem, this));
+            Global.instance.entireFrame.Navigate(new AddEvent(selIndex, selectedItem, this, 0));
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

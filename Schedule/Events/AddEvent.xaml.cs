@@ -25,7 +25,19 @@ namespace Schedule.Events
         Event curEvent = null;
         EventsPage parentPage;
 
-        public AddEvent(int _index, Event item, EventsPage _parentPage)
+        const int Dynamic_Primary_left = 10;
+        const int Dynamic_Primary_top = 10;
+        const int Dynamic_Label_width = 100;
+        const int Dynamic_Content_width = 500;
+
+        public class DynamicItem
+        {
+            public TextBox Title;
+            public TextBox Content;
+        }
+        List<DynamicItem> DynamicItems;
+
+        public AddEvent(int _index, Event item, EventsPage _parentPage, int primaryEventCount)
         {
             InitializeComponent();
 
@@ -40,6 +52,7 @@ namespace Schedule.Events
                 ContactSelect.Items.Add(new KeyValuePair<int, string>(contact.Id, contact.Name));
             }
 
+
             if (item != null)
             {
                 curEvent = item;
@@ -49,10 +62,63 @@ namespace Schedule.Events
                 Hour.Text = item.EventDate.Hour.ToString();
                 Minute.Text = item.EventDate.Minute.ToString();
                 Second.Text = item.EventDate.Second.ToString();
-            }
-            else curEvent = new Event();
+                Recurring.IsChecked = item.Recurring;
 
-            eventDate.SelectedDate = DateTime.Now;
+                DynamicItems = new List<DynamicItem>();
+                for (var i = 0; i < item.Content.Count; i++)
+                {
+                    TextBox title = new TextBox();
+                    title.Margin = new Thickness(Dynamic_Primary_left, Dynamic_Primary_top + i * 35, 0, 0);
+                    title.Height = 30;
+                    title.Width = 100;
+                    title.HorizontalAlignment = HorizontalAlignment.Left;
+                    title.VerticalAlignment = VerticalAlignment.Top;
+                    title.Text = item.Content[i].Title;
+                    DynamicView.Children.Add(title);
+
+                    TextBox content = new TextBox();
+                    content.Margin = new Thickness(Dynamic_Primary_left + Dynamic_Label_width + 5, Dynamic_Primary_top + i * 35, 0, 0);
+                    content.Height = 30;
+                    content.Width = Dynamic_Content_width;
+                    content.HorizontalAlignment = HorizontalAlignment.Left;
+                    content.VerticalAlignment = VerticalAlignment.Top;
+                    content.Text = item.Content[i].Title;
+                    DynamicView.Children.Add(content);
+
+                    DynamicItems.Add(new DynamicItem() { Title = title, Content = content });
+                }
+                DynamicView.Height = 40 + 35 * item.Content.Count;
+            }
+            else
+            {
+                curEvent = new Event();
+                DynamicItems = new List<DynamicItem>();
+
+                for (int i = 0; i < primaryEventCount; i++)
+                {
+                    TextBox title = new TextBox();
+                    title.Margin = new Thickness(Dynamic_Primary_left, Dynamic_Primary_top + i * 35, 0, 0);
+                    title.Height = 30;
+                    title.Width = 100;
+                    title.HorizontalAlignment = HorizontalAlignment.Left;
+                    title.VerticalAlignment = VerticalAlignment.Top;
+                    DynamicView.Children.Add(title);
+
+                    TextBox content = new TextBox();
+                    content.Margin = new Thickness(Dynamic_Primary_left + Dynamic_Label_width + 5, Dynamic_Primary_top + i * 35, 0, 0);
+                    content.Height = 30;
+                    content.Width = Dynamic_Content_width;
+                    content.HorizontalAlignment = HorizontalAlignment.Left;
+                    content.VerticalAlignment = VerticalAlignment.Top;
+                    DynamicView.Children.Add(content);
+
+                    DynamicItems.Add(new DynamicItem() { Title = title, Content = content });
+                }
+
+                DynamicView.Height = 40 + 35 * primaryEventCount;
+
+                eventDate.SelectedDate = DateTime.Now;
+            }
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -82,6 +148,14 @@ namespace Schedule.Events
 
             TimeSpan ts = new TimeSpan(int.Parse(Hour.Text), int.Parse(Minute.Text), int.Parse(Second.Text));
             curEvent.EventDate = selectedDate.Date + ts;
+            curEvent.Recurring = Recurring.IsChecked ?? false;
+            curEvent.Content = new List<Event.ContentItem>();
+            for (int i = 0; i < DynamicItems.Count; i ++)
+            {
+                string title = DynamicItems[i].Title.Text;
+                string content = DynamicItems[i].Content.Text;
+                curEvent.Content.Add(new Event.ContentItem() { Title = title, Content = content });
+            }
 
             if (index == -1)
             {
@@ -97,6 +171,43 @@ namespace Schedule.Events
 
             Global.instance.entireFrame.GoBack();
             parentPage.reload();
+        }
+
+        private void AddView_Click(object sender, RoutedEventArgs e)
+        {
+            int index = DynamicItems.Count;
+
+            TextBox title = new TextBox();
+            title.Margin = new Thickness(Dynamic_Primary_left, Dynamic_Primary_top + index * 35, 0, 0);
+            title.Height = 30;
+            title.Width = 100;
+            title.HorizontalAlignment = HorizontalAlignment.Left;
+            title.VerticalAlignment = VerticalAlignment.Top;
+            DynamicView.Children.Add(title);
+
+            TextBox content = new TextBox();
+            content.Margin = new Thickness(Dynamic_Primary_left + Dynamic_Label_width + 5, Dynamic_Primary_top + index * 35, 0, 0);
+            content.Height = 30;
+            content.Width = Dynamic_Content_width;
+            content.HorizontalAlignment = HorizontalAlignment.Left;
+            content.VerticalAlignment = VerticalAlignment.Top;
+            DynamicView.Children.Add(content);
+
+            DynamicView.Height = 40 + 35 * index;
+
+            DynamicItems.Add(new DynamicItem() { Title = title, Content = content });
+        }
+
+        void resizeDynamicView()
+        {
+            for (int i = 0; i < DynamicItems.Count; i ++)
+            {
+                TextBox title = DynamicItems[i].Title;
+                TextBox content = DynamicItems[i].Content;
+
+                title.Margin = new Thickness(Dynamic_Primary_left, Dynamic_Primary_top + index * 35, 0, 0);
+                content.Margin = new Thickness(Dynamic_Primary_left + Dynamic_Label_width + 5, Dynamic_Primary_top + index * 35, 0, 0);
+            }
         }
     }
 }

@@ -61,6 +61,7 @@ namespace Schedule
         }
         public List<ContentItem> _content = null;
 
+        [XmlIgnore]
         public List<ContentItem> Content
         {
             get

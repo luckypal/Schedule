@@ -22,6 +22,11 @@
         <Label Content="Event Name" HorizontalAlignment="Left" Margin="36,49,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="EventName" HorizontalAlignment="Left" Height="30" Margin="115,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284"/>
         <CheckBox x:Name="Recurring" Content="Recurring every week." HorizontalAlignment="Left" Margin="403,51,0,0" VerticalAlignment="Top" Height="20" Width="136"/>
+        <Button Content="Add View" x:Name="AddView" Width="160" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AddView_Click" Margin="10,185,630,235"/>
+        <ScrollViewer x:Name="ScrollView" HorizontalAlignment="Left" Height="220" Margin="10,220,0,0" VerticalAlignment="Top" Width="780">
+            <Grid x:Name="DynamicView" HorizontalAlignment="Left" Height="10" Margin="10,10,0,0" VerticalAlignment="Top" Width="760">
+            </Grid>
+        </ScrollViewer>
 
     </Grid>
 </Page>
