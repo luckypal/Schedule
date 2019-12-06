@@ -63,8 +63,8 @@ namespace Schedule.WeeklyEvents
             List<Event> events = Global.instance.Events;
             for (int i = 0; i < events.Count; i++)
             {
-                if (startDate <= events [i].EventDate 
-                    && events [i].EventDate < endDate)
+                if ((startDate <= events [i].EventDate && events [i].EventDate < endDate)
+                    || events [i].Recurring)
                     EventList.Items.Add(events[i]);
             }
         }
