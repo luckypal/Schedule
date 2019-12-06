@@ -41,6 +41,11 @@ namespace Schedule.WeeklyEvents
                 Header = "Date",
                 DisplayMemberBinding = new Binding("EventDate")
             });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Day of Week",
+                DisplayMemberBinding = new Binding("DayOfWeek")
+            });
 
             DatePicker.SelectedDate = DateTime.Now;
         }
@@ -63,9 +68,21 @@ namespace Schedule.WeeklyEvents
             List<Event> events = Global.instance.Events;
             for (int i = 0; i < events.Count; i++)
             {
-                if ((startDate <= events [i].EventDate && events [i].EventDate < endDate)
-                    || events [i].Recurring)
+                if ((startDate <= events[i].EventDate && events[i].EventDate < endDate)
+                    || events[i].Recurring)
+                {
+                    string eventDayOfWeek = events[i].EventDate.DayOfWeek.ToString();
+                    if (events[i].Recurring)
+                    {
+                        events[i].DayOfWeek = string.Format("Every Week, {0}", eventDayOfWeek);
+                    }
+                    else
+                    {
+                        events[i].DayOfWeek = string.Format("Current Week, {0}", eventDayOfWeek);
+                    }
+
                     EventList.Items.Add(events[i]);
+                }
             }
         }
 

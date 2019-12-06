@@ -13,6 +13,7 @@ namespace Schedule
         {
 
         }
+        public string EventName { get; set; }
         public string ContactName { get; set; }
         public string WeekNumber { get; set; }
         public string Time { get; set; }

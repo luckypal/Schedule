@@ -28,6 +28,11 @@ namespace Schedule.Prediction
             EventList.View = gridView;
             gridView.Columns.Add(new GridViewColumn
             {
+                Header = "Event Name",
+                DisplayMemberBinding = new Binding("EventName")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
                 Header = "Contact Name",
                 DisplayMemberBinding = new Binding("ContactName")
             });
@@ -38,7 +43,7 @@ namespace Schedule.Prediction
             });
             gridView.Columns.Add(new GridViewColumn
             {
-                Header = "Time",
+                Header = "Time (H:M:S)",
                 DisplayMemberBinding = new Binding("Time")
             });
 
@@ -67,6 +72,7 @@ namespace Schedule.Prediction
                 {
                     Event curEvent = events[i];
                     PredictionEvent predictionEvent = new PredictionEvent();
+                    predictionEvent.EventName = curEvent.Name;
                     predictionEvent.ContactName = curEvent.ContactName;
                     string eventDayOfWeek = curEvent.EventDate.DayOfWeek.ToString();
                     if (curEvent.Recurring)

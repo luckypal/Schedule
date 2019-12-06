@@ -74,5 +74,8 @@ namespace Schedule
                 _content = value;
             }
         }
+
+        [XmlIgnore]
+        public string DayOfWeek { get; set; }
     }
 }
