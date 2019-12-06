@@ -1,0 +1,22 @@
+﻿<Page x:Class="Schedule.Prediction.MonthPrediction"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Schedule.Prediction"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MonthPrediction">
+
+    <Grid>
+        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Back_Click"/>
+        <Label Content="Next 4 Weeks Prediction" HorizontalAlignment="Left" Margin="549,10,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <ListView x:Name="EventList" HorizontalAlignment="Left" Height="395" Margin="10,45,0,0" VerticalAlignment="Top" Width="780" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

@@ -39,5 +39,10 @@ namespace Schedule
         {
             Global.instance.entireFrame.Navigate(new WeeklyEvents.EventsPage());
         }
+
+        private void TimeUsagePrediction_Click(object sender, RoutedEventArgs e)
+        {
+            Global.instance.entireFrame.Navigate(new Prediction.MonthPrediction());
+        }
     }
 }
