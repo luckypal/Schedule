@@ -11,21 +11,8 @@
     <Grid>
         <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Back_Click"/>
         <Button x:Name="Ok" Content="Ok" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="Ok_Click"/>
-        <Label Content="Date" HorizontalAlignment="Left" Margin="75,115,0,0" VerticalAlignment="Top"/>
-        <Label Content="Contact" HorizontalAlignment="Left" Margin="59,84,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="ContactSelect" HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top" Width="425" Height="30"/>
-        <DatePicker x:Name="eventDate" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" Height="30" Width="425"/>
-        <Label Content="Time (H:M:S)" HorizontalAlignment="Left" Margin="33,154,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Hour" HorizontalAlignment="Left" Height="30" Margin="115,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="137" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBox x:Name="Minute" HorizontalAlignment="Left" Height="30" Margin="259,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="137" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBox x:Name="Second" HorizontalAlignment="Left" Height="30" Margin="403,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="137" PreviewTextInput="NumberValidationTextBox"/>
-        <Label Content="Event Name" HorizontalAlignment="Left" Margin="36,49,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EventName" HorizontalAlignment="Left" Height="30" Margin="115,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284"/>
-        <CheckBox x:Name="Recurring" Content="Recurring every week." HorizontalAlignment="Left" Margin="403,51,0,0" VerticalAlignment="Top" Height="20" Width="136"/>
-        <Button Content="Add View" x:Name="AddView" Width="160" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AddView_Click" Margin="10,185,630,235"/>
-        <ScrollViewer x:Name="ScrollView" HorizontalAlignment="Left" Height="220" Margin="10,220,0,0" VerticalAlignment="Top" Width="780">
-            <Grid x:Name="DynamicView" HorizontalAlignment="Left" Height="10" Margin="10,10,0,0" VerticalAlignment="Top" Width="760">
-            </Grid>
+        <ScrollViewer x:Name="ScrollView" HorizontalAlignment="Left" Height="395" Margin="10,45,0,0" VerticalAlignment="Top" Width="780">
+            <Grid x:Name="DynamicContent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="385" Width="760"/>
         </ScrollViewer>
 
     </Grid>
